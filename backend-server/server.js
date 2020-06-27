@@ -24,8 +24,8 @@ app.use(function (req, res, next) {
 //const routes = require('./app/routes/index');
 //routes(app);
 
-// const initApp = require('./app/app');
-// initApp(app);
+const initApp = require('./app/app');
+initApp(app);
 
 app.listen(port);
 console.log('Todo RESTful API server started on: ' + port);
