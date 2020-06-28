@@ -24,6 +24,9 @@ app.use(function (req, res, next) {
 //const routes = require('./app/routes/index');
 //routes(app);
 
+// var cors = require('cors')
+// app.use(cors()) 
+
 const initApp = require('./app/app');
 initApp(app);
 
