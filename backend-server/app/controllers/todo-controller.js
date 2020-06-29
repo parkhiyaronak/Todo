@@ -59,14 +59,13 @@ exports.get = (request, response) => {
 };
 
 
-
+/**
+ * Updates the todo resource.
+ *
+ * @param request
+ * @param response
+*/
 exports.update = (request, response) => {
-  if (request.body.createdDate || request.body.modifiedDate) {
-      response.status(500).json({
-          message: "createdDate & modifiedDate not required"
-      });
-
-  }
   const itemId = request.params.id;
   const updateditem = Object.assign({}, request.body);
   updateditem.id = itemId;
@@ -76,50 +75,14 @@ exports.update = (request, response) => {
       .then(todo => {
           if (!todo) {
               return response.status(404).json({
-                  message: "todo not found"
+                  message: "Item not found in Database for given ID"
               });
           }
           response.status(200).json();
       })
-      .catch(err => {
-          err.message;
-          response.status(500).json({
-
-              // message: "not proper id formAT"
-          });
-      });
+      .catch(renderErrorResponse(response));
 };
-// /**
-//  * Updates the todo resource.
-//  *
-//  * @param request
-//  * @param response
-// */
-// exports.update = (request, response) => {
-//     const todoId = request.params.id;
-//     const updatedTodo = Object.assign({}, request.body);
-//     //console.log("------------before-------");
-//     //console.log(updatedTodo);
-//     updatedTodo.id = todoId;
-//     updatedTodo.modifiedDate = new Date().toISOString();
-//    // console.log("-------after----------")
-//     //console.log(updatedTodo);
-//     // const result = (todo) => {
-//     //     response.status(200);
-//     //     response.json(todo);
-//     // };
-//     const promise = todoService.update(updatedTodo);
-//     promise
-//         .then(todo => {
-//                 if (!todo) {
-//                   return response.status(404).json({
-//                     message: "Item not found in Database for given ID"
-//                   });
-//                 }
-//                 response.status(200).json(todo);
-//               })
-//         .catch(renderErrorResponse(response));
-// };
+
 
 /**
  * Deletes an todo resource.

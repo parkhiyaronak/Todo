@@ -11,6 +11,7 @@
       required
       class="form-control"
       @keyup.enter="updateTodo(todo)"
+      v-on:keyup.enter="$event.target.blur()"
       name="title"
     />
     <div class="input-group-append">

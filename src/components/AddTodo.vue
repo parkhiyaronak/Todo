@@ -25,8 +25,8 @@ export default {
     };
   },
   methods: {
-    addTodo(e) {
-      e.preventDefault(); //As we dont want form to submit
+    addTodo(event) {
+      if (event) event.preventDefault(); //As we dont want form to submit
       const newTodo = {
         title: this.title,
         completed: false

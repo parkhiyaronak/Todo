@@ -29,12 +29,14 @@ export default {
     };
   },
   methods: {
+    // To delete todo
     deleteTodo(id) {
       axios
         .delete(`http://localhost:3000/todos/${id}`)
         .then((this.todos = this.todos.filter(todo => todo.id !== id)))
         .catch(err => console.log(err));
     },
+    // To add new todo
     addTodo(newTodo) {
       const { title, completed } = newTodo;
       axios
@@ -46,6 +48,7 @@ export default {
         .catch(err => console.log(err));
     }
   },
+  // To list all todos
   created() {
     axios
       .get("http://localhost:3000/todos/")
