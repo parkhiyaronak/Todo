@@ -1,21 +1,24 @@
 <template>
-  <div id="app">
-    <Header/>
-    <AddTodo v-on:add-todo="addTodo"/>
-    <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo" />
+  <div class="container">
+    <div class="row vertical-centre justify-content-center mt-50">
+      <div class="col-md-6 mx-auto">
+        <Header />
+        <AddTodo v-on:add-todo="addTodo" />
+        <Todos v-bind:todos="todos" v-on:del-todo="deleteTodo" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Header from './components/layout/Header';
-import Todos from './components/Todos';
-import AddTodo from './components/AddTodo';
-import axios from 'axios';
-
+import Header from "./components/layout/Header";
+import Todos from "./components/Todos";
+import AddTodo from "./components/AddTodo";
+import axios from "axios";
 
 export default {
-  name: 'App',
-  components: { 
+  name: "App",
+  components: {
     Todos,
     Header,
     AddTodo
@@ -23,63 +26,65 @@ export default {
   data() {
     return {
       todos: []
-    }
+    };
   },
   methods: {
     deleteTodo(id) {
-      axios.delete(`http://localhost:3000/todos/${id}`)
-        .then(this.todos = this.todos.filter(todo => todo.id !== id))
+      axios
+        .delete(`http://localhost:3000/todos/${id}`)
+        .then((this.todos = this.todos.filter(todo => todo.id !== id)))
         .catch(err => console.log(err));
     },
     addTodo(newTodo) {
       const { title, completed } = newTodo;
-      axios.post('http://localhost:3000/todos', {
-        title,
-        completed
-      })
-        .then(res => this.todos = [...this.todos, res.data])
+      axios
+        .post("http://localhost:3000/todos", {
+          title,
+          completed
+        })
+        .then(res => (this.todos = [...this.todos, res.data]))
         .catch(err => console.log(err));
     }
   },
-   created() {
-    axios.get('http://localhost:3000/todos/')
-      .then(res => this.todos = res.data)
-      .catch(err => console.log(err))
-    }
-}
+  created() {
+    axios
+      .get("http://localhost:3000/todos/")
+      .then(res => (this.todos = res.data))
+      .catch(err => console.log(err));
+  }
+};
 </script>
 
-<style>
-/* #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-} */
+<style lang="scss">
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap-vue/src/index.scss";
 
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+.vertical-centre {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+}
 
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.4;
-  }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+}
 
-  .btn {
-    display: inline-block;
-    border: none;
-    background: #555;
-    color: #fff;
-    padding: 7px 20px;
-    cursor: pointer;
-  }
+.btn {
+  display: inline-block;
+  border: none;
+  background: #4caf50;
+  color: #fff;
+  padding: 7px 20px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
 
-  .btn:hover {
-    background: #666;
-  }
+.btn:hover {
+  background: rgb(22, 138, 11);
+}
+
+.todo-row {
+  width: 400px;
+}
 </style>

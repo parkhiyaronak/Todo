@@ -1,14 +1,22 @@
 <template>
-  <div>
-    <form @submit="addTodo">
-      <input type="text" v-model="title" name="title" placeholder="Add your Todos.." />
-      <input type="submit" value="Submit" class="btn" />
+  <div class="col align-self-center">
+    <form class="sign-in" @submit="addTodo">
+      <div class="form-group todo-row">
+        <input
+          type="text"
+          required
+          class="form-control"
+          v-model="title"
+          name="title"
+          placeholder="Add your Todos.."
+        />
+      </div>&nbsp;&nbsp;
+      <input type="submit" value="Add it!" class="btn" />
     </form>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "AddTodo",
   data() {
@@ -33,6 +41,7 @@ export default {
 
 <style scoped>
 form {
+  margin-top: 10px;
   display: flex;
 }
 
