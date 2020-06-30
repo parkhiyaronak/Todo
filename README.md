@@ -9,6 +9,11 @@ todo_app_with_backend_server branch: Todo app operations using backend APIs and 
 todo_app_UI branch: Todo app with CSS and bootstrap views (Vue.js, Node.js, CSS, Bootstrap)
 Master branch: It has final code with all the requirements
 
+### App Overview
+[
+![TodoApp](https://user-images.githubusercontent.com/49632061/86165204-fc816300-bae0-11ea-8f2b-7d08778c7511.PNG)
+](url)
+
 ### Project Setup and Requirements
 
 ```
