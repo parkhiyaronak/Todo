@@ -3,7 +3,7 @@
 ### Exercises
 Implement Todo App using Vue.js as a frontend and Node.js as Backend technology.
 
-### Branches explansation
+### Branches explanation
 todo_app branch: Initial working of todo app with static data without backend APIs (Only Vue.js)
 todo_app_with_backend_server branch: Todo app operations using backend APIs and basic css (Vue.js and Node.js)
 todo_app_UI branch: Todo app with CSS and bootstrap views (Vue.js, Node.js, CSS, Bootstrap)
